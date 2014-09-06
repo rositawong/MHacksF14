@@ -1,0 +1,13 @@
+platform :ios, “7.0”
+
+
+target "Tardy" do
+
+	pod 'Venmo-iOS-SDK', :git => 'https://github.com/venmo/venmo-ios-sdk'
+
+end
+
+target "TardyTests" do
+
+end
+
