@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
-
+#import <Venmo-iOS-SDK/Venmo.h>
 @interface AppDelegate ()
 
 @end
@@ -18,10 +18,37 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [Venmo startWithAppId:@"1936" secret:@"YSbPUqwKMFWcChDFSL6uFt53g8HfrWvK" name:@"Tardy"];
     [FBLoginView class];
     
     return YES;
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    if ([[Venmo sharedInstance] handleOpenURL:url]) {
+        return YES;
+    }
+    
+    if (![Venmo isVenmoAppInstalled]) {
+        [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
+    }
+    else {
+        [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];
+    }
+    
+    [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
+                                                 VENPermissionAccessProfile]
+                         withCompletionHandler:^(BOOL success, NSError *error) {
+                             if (success) {
+                                 NSLog(@"Permission granted");
+                             }
+                             else {
+                                 NSLog(@"Permission denied");
+                             }
+                         }];
+    // You can add your app-specific url handling code here if needed
+    
+    return NO;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -45,5 +72,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
 
 @end
