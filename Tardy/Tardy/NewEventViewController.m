@@ -22,6 +22,9 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    [self fetchUpcomingEvents];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,5 +99,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - Events
+
+- (void) fetchUpcomingEvents {
+    // Server call to facebook
+    // Set self.allEvents
+}
 
 @end
