@@ -14,5 +14,6 @@
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic) bool participating;
 @property (nonatomic) bool arrived;
+@property (nonatomic, strong) NSMutableArray *attendees;
 
 @end
