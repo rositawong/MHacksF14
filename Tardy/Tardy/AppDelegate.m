@@ -25,29 +25,10 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
     if ([[Venmo sharedInstance] handleOpenURL:url]) {
         return YES;
-    }
-    
-    if (![Venmo isVenmoAppInstalled]) {
-        [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
-    }
-    else {
-        [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];
-    }
-    
-    [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
-                                                 VENPermissionAccessProfile]
-                         withCompletionHandler:^(BOOL success, NSError *error) {
-                             if (success) {
-                                 NSLog(@"Permission granted");
-                             }
-                             else {
-                                 NSLog(@"Permission denied");
-                             }
-                         }];
-    // You can add your app-specific url handling code here if needed
-    
+    }    
     return NO;
 }
 
