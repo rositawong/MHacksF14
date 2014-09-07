@@ -12,6 +12,12 @@
 #define COCOAPODS_VERSION_MINOR_CMDQueryStringSerialization 2
 #define COCOAPODS_VERSION_PATCH_CMDQueryStringSerialization 0
 
+// Firebase
+#define COCOAPODS_POD_AVAILABLE_Firebase
+#define COCOAPODS_VERSION_MAJOR_Firebase 1
+#define COCOAPODS_VERSION_MINOR_Firebase 1
+#define COCOAPODS_VERSION_PATCH_Firebase 12
+
 // SSKeychain
 #define COCOAPODS_POD_AVAILABLE_SSKeychain
 #define COCOAPODS_VERSION_MAJOR_SSKeychain 1

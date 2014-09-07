@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="444" y="158"/>
         </scene>
-        <!--Participating Events-->
+        <!--Events-->
         <scene sceneID="IkX-Iv-Qfi">
             <objects>
-                <tableViewController id="YSW-tL-tt1" customClass="ParticipatingEventsViewController" sceneMemberID="viewController">
+                <tableViewController id="YSW-tL-tt1" userLabel="Events" customClass="EventsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nPn-xJ-CBg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,7 +71,7 @@
                             <outlet property="delegate" destination="YSW-tL-tt1" id="2T4-95-VtG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Participating Events" id="4oc-gQ-bZI"/>
+                    <navigationItem key="navigationItem" title="Events" id="4oc-gQ-bZI"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Alo-kP-hPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

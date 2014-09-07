@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65392FCD94184770905D34C8"
+               BlueprintIdentifier = "EDE6CF36A37140929A874231"
                BuildableName = "libPods-Tardy-CMDQueryStringSerialization.a"
                BlueprintName = "Pods-Tardy-CMDQueryStringSerialization"
                ReferencedContainer = "container:Pods.xcodeproj">

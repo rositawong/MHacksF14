@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Venmo-iOS-SDK/Venmo.h>
+#import <Firebase/Firebase.h>
+
 @interface AppDelegate ()
 
 @end
@@ -19,7 +21,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [Venmo startWithAppId:@"1936" secret:@"YSbPUqwKMFWcChDFSL6uFt53g8HfrWvK" name:@"Tardy"];
+    
     [FBLoginView class];
+    
+    
     
     return YES;
 }
