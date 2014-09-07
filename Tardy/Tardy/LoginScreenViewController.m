@@ -8,6 +8,7 @@
 
 #import "LoginScreenViewController.h"
 //#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
 
 @interface LoginScreenViewController ()
 
@@ -24,6 +25,23 @@
     
     self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends", @"user_events"];
     [self.continueButton setHidden:YES];
+    
+//    PFUser *user = [PFUser user];
+//    user.username = @"winschen";
+//    user.password = @"parsePass";
+//    user.email = @"winschen@umich.edu";
+//    
+//    // other fields can be set if you want to save more information
+//    user[@"phone"] = @"248-675-7875";
+//    
+//    [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//        if (!error) {
+//            // Hooray! Let them use the app now.
+//        } else {
+//            NSString *errorString = [error userInfo][@"error"];
+//            // Show the errorString somewhere and let the user try again.
+//        }
+//    }];
     
 }
 

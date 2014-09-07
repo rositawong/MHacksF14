@@ -231,6 +231,7 @@
 		1872EDE219BBFEBD0055DA12 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1872EDE119BBFEBD0055DA12 /* Social.framework */; };
 		1872EDE419BBFEC30055DA12 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1872EDE319BBFEC30055DA12 /* StoreKit.framework */; };
 		1872EDE619BBFECB0055DA12 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1872EDE519BBFECB0055DA12 /* SystemConfiguration.framework */; };
+		1872EDE919BC11080055DA12 /* VenmoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1872EDE819BC11080055DA12 /* VenmoViewController.m */; };
 		B14AC009A8B841DFBD2AE898 /* libPods-Tardy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C3BC9B7FEF4460CA17F4087 /* libPods-Tardy.a */; };
 /* End PBXBuildFile section */
 
@@ -479,6 +480,8 @@
 		1872EDE119BBFEBD0055DA12 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		1872EDE319BBFEC30055DA12 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		1872EDE519BBFECB0055DA12 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		1872EDE719BC11080055DA12 /* VenmoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VenmoViewController.h; sourceTree = "<group>"; };
+		1872EDE819BC11080055DA12 /* VenmoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VenmoViewController.m; sourceTree = "<group>"; };
 		55F625BD55204D1893881F62 /* Pods-Tardy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tardy.xcconfig"; path = "Pods/Pods-Tardy.xcconfig"; sourceTree = "<group>"; };
 		5C3BC9B7FEF4460CA17F4087 /* libPods-Tardy.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Tardy.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -547,6 +550,8 @@
 				18285A2419BADE5F00E29869 /* ViewController.h */,
 				18285A2519BADE5F00E29869 /* ViewController.m */,
 				1872EC3419BAFE3B0055DA12 /* Main.storyboard */,
+				1872EDE719BC11080055DA12 /* VenmoViewController.h */,
+				1872EDE819BC11080055DA12 /* VenmoViewController.m */,
 				1872EDCA19BB11830055DA12 /* LoginScreenViewController.h */,
 				1872EDCB19BB11830055DA12 /* LoginScreenViewController.m */,
 				1872EC2B19BAEC170055DA12 /* EventsViewController.h */,
@@ -1152,6 +1157,7 @@
 				18285A2619BADE5F00E29869 /* ViewController.m in Sources */,
 				1872EC2D19BAEC170055DA12 /* EventsViewController.m in Sources */,
 				1872EC3019BAEE0B0055DA12 /* Event.m in Sources */,
+				1872EDE919BC11080055DA12 /* VenmoViewController.m in Sources */,
 				1872EDCC19BB11830055DA12 /* LoginScreenViewController.m in Sources */,
 				18285A2319BADE5F00E29869 /* AppDelegate.m in Sources */,
 				18285A2019BADE5F00E29869 /* main.m in Sources */,

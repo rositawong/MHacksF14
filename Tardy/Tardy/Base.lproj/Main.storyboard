@@ -54,7 +54,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="444" y="158"/>
+            <point key="canvasLocation" x="436" y="150"/>
         </scene>
         <!--Events-->
         <scene sceneID="IkX-Iv-Qfi">
@@ -159,6 +159,9 @@
                                 <state key="normal" title="Check-in">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="p30-E7-VPa" kind="push" id="9Yy-AT-YGf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Attendees:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BKt-eT-UdX">
                                 <rect key="frame" x="119" y="189" width="83" height="21"/>
@@ -174,7 +177,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MOR-FM-pFP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3470" y="-152"/>
+            <point key="canvasLocation" x="2906" y="-152"/>
         </scene>
         <!--New Event-->
         <scene sceneID="GHy-vQ-4vI">
@@ -216,6 +219,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tez-LC-fjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1936" y="506"/>
+        </scene>
+        <!--Venmo View Controller-->
+        <scene sceneID="sP4-9o-ZiW">
+            <objects>
+                <viewController id="JLH-OH-Aa8" customClass="VenmoViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cxf-Dc-uaT">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name, Phone, or Email" minimumFontSize="17" id="Ypn-bH-Alg">
+                                <rect key="frame" x="16" y="48" width="193" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0.00" minimumFontSize="17" id="FLa-hn-Eqq">
+                                <rect key="frame" x="217" y="48" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What is it for?" minimumFontSize="17" id="R3a-j7-7Nv">
+                                <rect key="frame" x="16" y="92" width="298" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e8c-Va-m5r">
+                                <rect key="frame" x="55" y="216" width="211" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Pay through Venmo">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendAction:" destination="JLH-OH-Aa8" eventType="touchUpInside" id="icd-zq-vK0"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="j7a-5n-0TO"/>
+                    <connections>
+                        <outlet property="amountTextField" destination="FLa-hn-Eqq" id="faA-Bg-vPL"/>
+                        <outlet property="noteTextField" destination="R3a-j7-7Nv" id="kVp-60-flm"/>
+                        <outlet property="paybutton" destination="e8c-Va-m5r" id="oCF-3N-zIz"/>
+                        <outlet property="toTextField" destination="Ypn-bH-Alg" id="HZc-gP-mtR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gCO-l8-Wsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3935" y="-168"/>
         </scene>
         <!--New-->
         <scene sceneID="TQO-Ho-SaB">
@@ -272,7 +327,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2pC-j8-4UW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2938" y="-152"/>
+            <point key="canvasLocation" x="2410" y="-152"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4na-zB-K7F">
@@ -310,6 +365,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xAP-mJ-zTQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1412" y="-152"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kFa-YD-FOE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="p30-E7-VPa" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="1lL-fp-xfH"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="oIe-aU-It2">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="JLH-OH-Aa8" kind="relationship" relationship="rootViewController" id="6iM-Cj-tzV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e0v-Oc-vTL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3403" y="-168"/>
         </scene>
     </scenes>
     <resources>

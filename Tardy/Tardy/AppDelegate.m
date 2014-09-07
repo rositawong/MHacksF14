@@ -1,24 +1,18 @@
-//
-//  AppDelegate.m
-//  Tardy
-//
-//  Created by apple on 9/6/14.
-//  Copyright (c) 2014 Apple Test. All rights reserved.
-//
 
+#import <Parse/Parse.h>
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Venmo-iOS-SDK/Venmo.h>
 
 #define VENMO_SCHEME @"venmo1936"
-#define FACEBOOK_SCHEME @"fb330987347078812"
+#define FACEBOOK_SCHEME @"1463251830619809"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-            
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
@@ -29,32 +23,11 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    
     if ([[url scheme] isEqualToString:VENMO_SCHEME]) {
         if ([[Venmo sharedInstance] handleOpenURL:url]) {
             return YES;
         }
-        
-        if (![Venmo isVenmoAppInstalled]) {
-            [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
-        }
-        else {
-            [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];
-        }
-        
-        [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
-                                                     VENPermissionAccessProfile]
-                             withCompletionHandler:^(BOOL success, NSError *error) {
-                                 if (success) {
-                                     NSLog(@"Permission granted");
-                                 }
-                                 else {
-                                     NSLog(@"Permission denied");
-                                 }
-                             }];
     }
-    // You can add your app-specific url handling code here if needed
-    
     if ([[url scheme] isEqualToString:FACEBOOK_SCHEME]) {
         // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
         BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
@@ -66,8 +39,6 @@
     
     return NO;
 }
-
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
