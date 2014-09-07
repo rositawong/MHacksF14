@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Venmo-iOS-SDK/Venmo.h>
+
+#define VENMO_SCHEME @"venmo1936"
+#define FACEBOOK_SCHEME @"fb330987347078812"
+
 @interface AppDelegate ()
 
 @end
@@ -25,31 +29,45 @@
 }
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
-    if ([[Venmo sharedInstance] handleOpenURL:url]) {
-        return YES;
-    }
     
-    if (![Venmo isVenmoAppInstalled]) {
-        [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
+    if ([[url scheme] isEqualToString:VENMO_SCHEME]) {
+        if ([[Venmo sharedInstance] handleOpenURL:url]) {
+            return YES;
+        }
+        
+        if (![Venmo isVenmoAppInstalled]) {
+            [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAPI];
+        }
+        else {
+            [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];
+        }
+        
+        [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
+                                                     VENPermissionAccessProfile]
+                             withCompletionHandler:^(BOOL success, NSError *error) {
+                                 if (success) {
+                                     NSLog(@"Permission granted");
+                                 }
+                                 else {
+                                     NSLog(@"Permission denied");
+                                 }
+                             }];
     }
-    else {
-        [[Venmo sharedInstance] setDefaultTransactionMethod:VENTransactionMethodAppSwitch];
-    }
-    
-    [[Venmo sharedInstance] requestPermissions:@[VENPermissionMakePayments,
-                                                 VENPermissionAccessProfile]
-                         withCompletionHandler:^(BOOL success, NSError *error) {
-                             if (success) {
-                                 NSLog(@"Permission granted");
-                             }
-                             else {
-                                 NSLog(@"Permission denied");
-                             }
-                         }];
     // You can add your app-specific url handling code here if needed
+    
+    if ([[url scheme] isEqualToString:FACEBOOK_SCHEME]) {
+        // Call FBAppCall's handleOpenURL:sourceApplication to handle Facebook app responses
+        BOOL wasHandled = [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+        
+        // You can add your app-specific url handling code here if needed
+        
+        return wasHandled;
+    }
     
     return NO;
 }
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

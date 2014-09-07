@@ -7,8 +7,10 @@
 //
 
 #import "NewEventViewController.h"
+#import <FacebookSDK/FacebookSDK.h>
+#import "Event.h"
 
-@interface NewEventViewController ()
+@interface NewEventViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -23,6 +25,9 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    NSLog(@"View Did Load");
+    
+    
     [self fetchUpcomingEvents];
     
 }
@@ -35,26 +40,29 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
+//#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
+//#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.allEvents count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     // Configure the cell...
+    //cell.textLabel.text = [self.allEvents objectAtIndex:indexPath].name;
+    //cell.detailTextLabel.text = [self.allEvents objectAtIndex:indexPath].date;
+    
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.
@@ -105,6 +113,19 @@
 - (void) fetchUpcomingEvents {
     // Server call to facebook
     // Set self.allEvents
+    
+    /* make the API call */
+    [FBRequestConnection startWithGraphPath:@"/me/events"
+                                 parameters:nil
+                                 HTTPMethod:@"GET"
+                          completionHandler:^(
+                                              FBRequestConnection *connection,
+                                              id result,
+                                              NSError *error
+                                              ) {
+                              /* handle the result */
+                          }];
+    
 }
 
 @end

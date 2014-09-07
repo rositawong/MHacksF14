@@ -7,7 +7,7 @@
 //
 
 #import "LoginScreenViewController.h"
-#import <FacebookSDK/FacebookSDK.h>
+//#import <FacebookSDK/FacebookSDK.h>
 
 @interface LoginScreenViewController ()
 
@@ -19,14 +19,65 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    FBLoginView *loginView = [[FBLoginView alloc] init];
-    [self.view addSubview:loginView];
+    //FBLoginView *loginView = [[FBLoginView alloc] init];
+    //[self.view addSubview:loginView];
+    
+    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends", @"user_events"];
+    [self.continueButton setHidden:YES];
     
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user {
+    NSLog(@"%@", user.name);
+}
+
+- (void) loginViewShowingLoggedInUser:(FBLoginView *)loginView {
+    NSLog(@"You are logged in!");
+    [self.continueButton setHidden:NO];
+}
+
+- (void)loginViewShowingLoggedOutUser:(FBLoginView *)loginView {
+    NSLog(@"You are logged out!");
+    [self.continueButton setHidden:YES];
+}
+
+- (void)loginView:(FBLoginView *)loginView handleError:(NSError *)error {
+    NSString *alertMessage, *alertTitle;
+    
+    if ([FBErrorUtility shouldNotifyUserForError:error])
+    {
+        alertTitle = @"Facebook error";
+        alertMessage = [FBErrorUtility userMessageForError:error];
+    }
+    else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryAuthenticationReopenSession)
+    {
+        alertTitle = @"Session Error";
+        alertMessage = @"Your current session is no longer valid. Please log in again.";
+    }
+    else if ([FBErrorUtility errorCategoryForError:error] == FBErrorCategoryUserCancelled)
+    {
+        NSLog(@"user cancelled login");
+    }
+    else
+    {
+        alertTitle = @"Something went wrong";
+        alertMessage = @"Please try again later.";
+        NSLog(@"Unexpected error:%@", error);
+    }
+    
+    if (alertMessage)
+    {
+        [[[UIAlertView alloc] initWithTitle:alertTitle
+                                    message:alertMessage
+                                   delegate:nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil] show];
+    }
 }
 
 /*

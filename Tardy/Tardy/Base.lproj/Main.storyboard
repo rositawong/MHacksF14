@@ -4,10 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login Screen View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="LoginScreenViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -23,20 +23,43 @@
                                 <rect key="frame" x="7" y="262" width="307" height="76"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="YXZ-de-4S2"/>
+                                </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="e8J-iV-xPM">
+                                <rect key="frame" x="129" y="447" width="62" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="ijz-im-rW3" kind="push" id="odG-br-e3T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="X9v-3b-ehZ"/>
+                    <connections>
+                        <outlet property="continueButton" destination="e8J-iV-xPM" id="Q8r-Jc-Dh5"/>
+                        <outlet property="loginView" destination="ZgB-aB-eiH" id="dxc-dI-FGu"/>
+                        <outlet property="searchDisplayController" destination="pm5-Dq-UW1" id="K1S-hl-lZR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="pm5-Dq-UW1">
+                    <connections>
+                        <outlet property="delegate" destination="vXZ-lx-hvc" id="Cb7-5i-0Jr"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="444" y="158"/>
         </scene>
-        <!--Participating Events-->
+        <!--Events-->
         <scene sceneID="IkX-Iv-Qfi">
             <objects>
-                <tableViewController id="YSW-tL-tt1" customClass="ParticipatingEventsViewController" sceneMemberID="viewController">
+                <tableViewController id="YSW-tL-tt1" customClass="EventsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="nPn-xJ-CBg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -71,9 +94,20 @@
                             <outlet property="delegate" destination="YSW-tL-tt1" id="2T4-95-VtG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Participating Events" id="4oc-gQ-bZI"/>
+                    <navigationItem key="navigationItem" title="Events" id="4oc-gQ-bZI"/>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="m1B-XS-0F1" id="BJX-YP-T3o"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Alo-kP-hPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="m1B-XS-0F1">
+                    <connections>
+                        <outlet property="delegate" destination="YSW-tL-tt1" id="CW7-hu-as4"/>
+                        <outlet property="searchContentsController" destination="YSW-tL-tt1" id="oF6-Vq-aGC"/>
+                        <outlet property="searchResultsDataSource" destination="YSW-tL-tt1" id="vsO-JX-61y"/>
+                        <outlet property="searchResultsDelegate" destination="YSW-tL-tt1" id="wr2-8O-dKE"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1944" y="-152"/>
         </scene>
